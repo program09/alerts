@@ -89,6 +89,7 @@ apy({
 ## Position Options for Floating Alerts
 - top-right (default)
 - top-left
+- top-center
 - bottom-right
 - bottom-left
 ## Advanced Usage
