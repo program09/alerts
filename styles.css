@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --shadow-1: rgba(221, 221, 221, 0.1) 0px 0px 16px;
+    --z-index: 999999;
+    --brop: #cecece60;
+    --alert: #ffffff;
+    --cl-btn: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eff4fa;
+}
+
+.dark {
+    --shadow-1: rgba(221, 221, 221, 0.1) 0px 0px 16px;
+    --brop: #3030305b;
+    --alert: #0e0e18;
+    --cl-btn: #f1f1f1;
+}
+
+body.dark {
+    background-color: var(--brop);
+}
+
+.apy-backdrop {
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--brop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    z-index: var(--z-index);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    padding: 10px;
+}
+
+.apy-alert {
+    width: 450px;
+    max-width: 500px;
+    background-color: var(--alert);
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: var(--shadow-1);
+    transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.dark .apy-alert {
+    color: #fff;
+}
+
+.apy-alert .apy-alert-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+/* BOTONES CANCEL - OK */
+.apy-btn {
+    padding: 8px 15px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    font-size: 15px;
+    color: var(--cl-btn);
+    cursor: pointer;
+}
+
+.apy-btn-cancel {
+    background-color: #ec818100;
+}
+
+.apy-btn-cancel:hover {
+    background-color: #ed8383 !important;
+    color: #fff !important;
+}
+
+.apy-btn.apy-btn-ok {
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.apy-btn.apy-btn-ok:disabled {
+    background-color: #fff !important;
+}
+
+.dark .apy-btn.apy-btn-ok:disabled {
+    background-color: transparent !important;
+}
+
+.apy-btn.apy-btn-ok:disabled:hover {
+    background-color: transparent !important;
+}
+
+.apy-btn.apy-btn-ok:hover {
+    background-color: #272829 !important;
+    color: #fff !important;
+}
+
+.dark .apy-btn.apy-btn-ok:disabled:hover {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+/** BOTONES MODO DARK*/
+
+.dark .apy-alert h3 {
+    color: #e1e1e1;
+}
+
+.dark .apy-alert p {
+    color: #ebebeb;
+}
+
+.dark .apy-btn {
+    color: #fff !important;
+}
+
+.dark .apy-btn.apy-btn-ok {
+    background-color: #646464 !important;
+}
+
+.dark .apy-btn.apy-btn-ok:hover {
+    background-color: #272829 !important;
+    color: #fff !important;
+}
+
+/** BOTONES MODO DARK*/
+.apy-alert-body {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.apy-alert-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.apy-alert-icon span {
+    animation: infinite alertIconAnimation 2s ease-in-out;
+}
+
+.apy-alert-icon span {
+    animation: alertIconSwing 3s ease-in-out infinite;
+}
+
+@keyframes alertIconSwing {
+    0% {scale: 1.2;}
+    25% {scale: 1;}
+    50% {scale: 1.2;}
+    75% {scale: 1;}
+    100% {scale: 1.2;}
+}
+
+.apy-alert-icon span {
+    width: 35px;
+    height: 35px;
+}
+
+.apy-alert-icon:empty {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.apy-alert-body:has(.apy-alert-icon:empty) .apy-alert-title {
+    width: 100% !important;
+}
+
+.apy-alert-title {
+    width: calc(100% - 60px);
+}
+
+.apy-alert-title h3 {
+    margin-bottom: 10px;
+}
+
+.apy-alert-title p {
+    color: #1a1a29;
+    font-size: 14px;
+}
+
+/*ICONS*/
+.apy-btn.apy-btn-ok .loader {
+    width: 15px;
+    height: 15px;
+    border: 3px solid var(--cl-btn);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+.apy-icon-danger {
+    display: inline-block;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath stroke-dasharray='64' stroke-dashoffset='64' d='M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' dur='0.6s' values='64;0'/%3E%3C/path%3E%3Cpath stroke-dasharray='8' stroke-dashoffset='8' d='M12 7v6'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.6s' dur='0.2s' values='8;0'/%3E%3C/path%3E%3Cpath stroke-dasharray='2' stroke-dashoffset='2' d='M12 17v0.01'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.8s' dur='0.2s' values='2;0'/%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.apy-icon-warning {
+    display: inline-block;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath stroke-dasharray='64' stroke-dashoffset='64' d='M12 3l9 17h-18l9 -17Z'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' dur='0.6s' values='64;0'/%3E%3C/path%3E%3Cpath stroke-dasharray='6' stroke-dashoffset='6' d='M12 10v4'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.6s' dur='0.2s' values='6;0'/%3E%3C/path%3E%3Cpath stroke-dasharray='2' stroke-dashoffset='2' d='M12 17v0.01'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.8s' dur='0.2s' values='2;0'/%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.apy-icon-success {
+    display: inline-block;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cmask id='lineMdCheckAll0'%3E%3Cg fill='none' stroke='%23fff' stroke-dasharray='24' stroke-dashoffset='24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M2 13.5l4 4l10.75 -10.75'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' dur='0.4s' values='24;0'/%3E%3C/path%3E%3Cpath stroke='%23000' stroke-width='6' d='M7.5 13.5l4 4l10.75 -10.75'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.4s' dur='0.4s' values='24;0'/%3E%3C/path%3E%3Cpath d='M7.5 13.5l4 4l10.75 -10.75'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.4s' dur='0.4s' values='24;0'/%3E%3C/path%3E%3C/g%3E%3C/mask%3E%3Crect width='24' height='24' fill='%23000' mask='url(%23lineMdCheckAll0)'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.apy-icon-question {
+    display: inline-block;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath stroke-dasharray='28' stroke-dashoffset='28' d='M7 8c0 -2.76 2.24 -5 5 -5c2.76 0 5 2.24 5 5c0 1.64 -0.79 3.09 -2 4c-0.84 0.63 -3 2 -3 5'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' dur='0.6s' values='28;0'/%3E%3C/path%3E%3Cpath stroke-dasharray='2' stroke-dashoffset='2' d='M12 21v0.01'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.6s' dur='0.2s' values='2;0'/%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.apy-alert-float{
+    position: fixed;
+    width: 350px;
+    max-width: 450px;
+    z-index: 9999;
+    pointer-events: none;
+    margin: 10px;
+}
+
+.apy-alert-float:empty{
+    display: none;
+    position: relative;
+}
+
+.top-center{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top-left{
+    top: 0;
+    left: 0;
+}
+
+.top-right{
+    top: 0;
+    right: 0;
+}
+
+.bottom-left{
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-right{
+    bottom: 0;
+    right: 0;
+}
+
+.apy-alert-float{
+    display: block;
+}
+
+.apy-alert-float .apy-alert{
+    width: 100%;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.apy-alert-float .apy-alert .apy-alert-icon{
+    width: 30px;
+    height: 30px;
+}
+
+.apy-alert-float .apy-alert .apy-alert-icon span{
+    width: 25px;
+    height: 25px;
+}
+
+.apy-alert-float .apy-alert .apy-alert-title{
+    width: calc(100% - 55px);
+}
+
+.apy-alert-float .apy-alert .apy-alert-title p{
+    font-size: 14px;
+}
+
+.alert-color.apy-alert-float .apy-alert.success{
+    background-color: #52a15c90;
+    color: #397729 !important;
+}
+
+.alert-color.apy-alert-float .apy-alert.success p{
+    color: #27501d;
+}
+
+.alert-color.apy-alert-float .apy-alert.danger{
+    background-color: #e95a5a90;
+    color: #e43a3a !important;
+}
+
+.alert-color.apy-alert-float .apy-alert.danger p{
+    color: #bb2424 !important;
+}
+
+.alert-color.apy-alert-float .apy-alert.warning{
+    background-color: #dbe76a90;
+    color: #161616 !important;
+}
+
+.alert-color.apy-alert-float .apy-alert.warning p{
+    color: #161616 !important;
+}
+
+.apy-alert-float > * {
+    margin-bottom: 5px;
+}
+
+.apy-alert-float > *:last-child {
+    margin-bottom: 0; /* Para evitar espacio extra en el último elemento */
+}
+
+
+@media (max-width: 550px){
+    .apy-alert-float{
+        top: 10px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 10px;
+    }
+}
